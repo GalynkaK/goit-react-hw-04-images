@@ -26,7 +26,7 @@ const App = () => {
     }
     try {
       const response = await getImage(inputSearch.value, 1);
-      setImages(response);
+      setImages(response.images);
       setIsLoading(false);
       setCurrentSearch(inputSearch.value);
       setPage(1);
@@ -39,7 +39,7 @@ const App = () => {
 
   const handleClickMore = async () => {
     const response = await getImage(currentSearch, page + 1);
-    setImages([...images, ...response]);
+    setImages([...images, ...response.images]);
     setPage(page + 1);
   };
 
